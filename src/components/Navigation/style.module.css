@@ -1,5 +1,6 @@
 .navigation {
   display: flex;
+  background-color: #f0f1f8;
   height: 3.5rem;
 }
 
