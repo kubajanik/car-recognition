@@ -5,3 +5,14 @@
 .container > div {
   height: calc(100% - 3.5rem);
 }
+
+@media (orientation: landscape) {
+  .container {
+    display: flex;
+  }
+
+  .container > div {
+    height: 100%;
+    width: calc(100% - 3.5rem);
+  }
+}

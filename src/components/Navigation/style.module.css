@@ -22,3 +22,11 @@
 .navigation > a > svg {
   font-size: 1.65rem;
 }
+
+@media (orientation: landscape) {
+  .navigation {
+    flex-direction: column;
+    width: 3.5rem;
+    height: 100%;
+  }
+}

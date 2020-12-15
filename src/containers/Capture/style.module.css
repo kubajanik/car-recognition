@@ -39,3 +39,24 @@
     transform: scale(1) rotateZ(360deg);
   }
 }
+
+@media (orientation: landscape) {
+  .capture {
+    width: 100%;
+  }
+
+  .capture > video, .capture > canvas {
+    position: fixed;
+    left: 0;
+    width: calc(100vw - 3.5rem);
+    height: 100vh;
+  }
+
+  .capture > svg {
+    left: unset;
+    bottom: unset;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
