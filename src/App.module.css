@@ -1,0 +1,8 @@
+.container {
+  height: 100vh;
+}
+
+.container > div {
+  background: #f0f1f8;
+  height: calc(100% - 3.5rem);
+}

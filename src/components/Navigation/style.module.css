@@ -1,0 +1,23 @@
+.navigation {
+  display: flex;
+  height: 3.5rem;
+}
+
+.navigation > a {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #2f3137;
+  font-size: 0.65rem;
+}
+
+.navigation > a[aria-current] {
+  color: #fd3f3f;
+}
+
+.navigation > a > svg {
+  font-size: 1.65rem;
+}
