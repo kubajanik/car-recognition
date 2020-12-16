@@ -18,8 +18,11 @@ export const Capture = () => {
     return await navigator.mediaDevices.getUserMedia({video: {deviceId: cameraId}});
   }
 
+  const canvasToBlob = async canvas => {
+    return new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg', 0.5))
+  }
+
   const capturePhoto = async () => {
-    video.current.pause()
     setWasCaptured(true)
 
     const imageCapture = new ImageCapture(stream.getVideoTracks()[0])
@@ -28,6 +31,28 @@ export const Capture = () => {
     canvas.current.width = imageBitmap.width
     canvas.current.height = imageBitmap.height
     canvas.current.getContext('2d').drawImage(imageBitmap, 0, 0)
+
+    const image = await canvasToBlob(canvas.current)
+
+    const headers = new Headers()
+    headers.append('X-Access-Token', import.meta.env.SNOWPACK_PUBLIC_SIGHTHOUND_API_TOKEN)
+    headers.append('Content-Type', 'application/octet-stream')
+
+    const requestOptions = {
+      method: 'POST',
+      headers,
+      body: image
+    }
+
+    fetch('https://dev.sighthoundapi.com/v1/recognition?objectType=vehicle', requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        setWasCaptured(false)
+
+        const {make, model} = result.objects[0].vehicleAnnotation.attributes.system
+        alert(make.name + ' ' + model.name)
+      })
+      .catch(error => alert(error))
   }
 
   React.useEffect(() => {
@@ -38,7 +63,7 @@ export const Capture = () => {
   
         setStream(stream)
       })
-  }, [])
+  }, [wasCaptured])
 
   return (
     <div className={styles.capture}>
