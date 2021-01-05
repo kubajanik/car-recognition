@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
   res.json({
     make,
     model,
-    image: src.slice(2),
+    image: 'https:' + src,
     description: textContent
   })
 }
