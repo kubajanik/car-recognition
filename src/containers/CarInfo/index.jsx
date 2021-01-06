@@ -6,11 +6,11 @@ export const CarInfo = ({make, model}) => {
   const [car, setCar] = React.useState({})
 
   React.useEffect(() => {
-    window.fetch(`/api/car-info?make=${make}&model=${model}`)
+    window.fetch(`/.netlify/functions/car-info?make=${make}&model=${model}`)
       .then(res => res.json())
       .then(json => setCar(json))
       .catch(err => alert(err))
-  }, [])
+  }, [make, model])
 
   return (
     <div className={styles.modal}>

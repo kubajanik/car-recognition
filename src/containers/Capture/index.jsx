@@ -37,7 +37,7 @@ export const Capture = () => {
     const image = await canvasToBlob(canvas.current)
 
     const headers = new Headers()
-    headers.append('X-Access-Token', import.meta.env.SNOWPACK_PUBLIC_SIGHTHOUND_API_TOKEN)
+    headers.append('X-Access-Token', process.env.REACT_APP_SIGHTHOUND_API_TOKEN)
     headers.append('Content-Type', 'application/octet-stream')
 
     const requestOptions = {
@@ -49,10 +49,10 @@ export const Capture = () => {
     fetch('https://dev.sighthoundapi.com/v1/recognition?objectType=vehicle', requestOptions)
       .then(response => response.json())
       .then(result => {
-        setWasCaptured(false)
-
         const {make, model} = result.objects[0].vehicleAnnotation.attributes.system
         setCar({make: make.name, model: model.name})
+
+        setWasCaptured(false)
       })
       .catch(error => alert(error))
   }
@@ -61,7 +61,9 @@ export const Capture = () => {
     getConnectedDevices('videoinput')
       .then(async cameras => {
         const stream = await openCamera(cameras[1].deviceId)
-        video.current.srcObject = stream
+        if (video.current) {
+          video.current.srcObject = stream
+        }
   
         setStream(stream)
       })

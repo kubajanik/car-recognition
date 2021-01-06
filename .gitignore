@@ -1,8 +1,5 @@
-.build
-build
-web_modules
 node_modules
-snowpack.crt
-snowpack.key
+build
+npm-debug.log*
 .env
-.vercel
+.eslintcache
