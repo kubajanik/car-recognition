@@ -82,7 +82,7 @@ export const Capture = () => {
           onClick={capturePhoto}
         />
       </div>
-      {car && <CarInfo make={car.make} model={car.model} />}
+      {car && <CarInfo make={car.make} model={car.model} onClose={() => setCar(null)}/>}
     </>
   )
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './style.module.css'
 import {IoMdClose, IoMdHeartEmpty} from 'react-icons/io'
 
-export const CarInfo = ({make, model}) => {
+export const CarInfo = ({make, model, onClose}) => {
   const [car, setCar] = React.useState({})
 
   React.useEffect(() => {
@@ -13,13 +13,13 @@ export const CarInfo = ({make, model}) => {
   }, [make, model])
 
   return (
-    <div className={styles.modal}>
+    <div className={styles.modal} >
       <div>
         <IoMdHeartEmpty />
-        <IoMdClose />
+        <h2>{make} {model}</h2>
+        <IoMdClose onClick={onClose} />
       </div>
       <img src={car?.image} alt=""/>
-      <h2>{car?.make} {car?.model}</h2>
     </div>
   )
 }
