@@ -1,5 +1,6 @@
 import React from 'react'
 import db from '../../db'
+import styles from './style.module.css'
 
 export const History = () => {
   const [cars, setCars] = React.useState([])
@@ -10,10 +11,12 @@ export const History = () => {
   }, [])
 
   return (
-    <ul>
+    <div className={styles.history}>
       {cars.map(car => (
-        <li>{car.make} {car.model}</li>
+        <div>
+          <img src={car.image} alt="car" />
+        </div>
       ))}
-    </ul>
+    </div>
   )
 }

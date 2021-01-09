@@ -1,0 +1,31 @@
+.history {
+  height: 100%;
+  background-color: #f0f1f8;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: max-content;
+  grid-auto-rows: max-content;
+  gap: 1rem;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.history::after {
+  content: "";
+  height: 0.01rem;
+}
+
+.history > div {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  display: grid;
+  place-items: center;
+}
+
+.history > div > img {
+  object-fit: contain;
+  width: 90%;
+  min-height: 100%;
+}
