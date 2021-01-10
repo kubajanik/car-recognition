@@ -1,6 +1,6 @@
 .history {
   height: 100%;
-  background-color: #f0f1f8;
+  background-color: #fff;
   overflow-y: auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -11,15 +11,24 @@
   box-sizing: border-box;
 }
 
+.history > h2 {
+  font-weight: normal;
+  grid-column: 1 / span 2;
+  margin: 0;
+  text-align: center;
+  color: #2f3137;
+}
+
 .history::after {
   content: "";
   height: 0.01rem;
+  grid-column: span 2;
 }
 
 .history > div {
   background-color: #fff;
   border-radius: 0.5rem;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: #2f313733 0px 7px 29px 0px;
   display: grid;
   place-items: center;
 }

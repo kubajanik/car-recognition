@@ -2,6 +2,7 @@
   display: flex;
   background-color: #fff;
   height: 3.5rem;
+  box-shadow: #2f313733 0px -7px 29px 0px;
 }
 
 .navigation > a {
