@@ -1,15 +1,15 @@
 import React from 'react'
 import styles from './style.module.css'
 import {IoIosQrScanner as CaptureIcon} from 'react-icons/io'
-import {CarInfo} from '../CarInfo'
+import {useCarInfo} from '../CarInfo'
 
 export const Capture = () => {
   const video = React.useRef()
   const canvas = React.useRef()
   
-  const [stream, setStream] = React.useState()
+  const stream = React.useRef()
   const [wasCaptured, setWasCaptured] = React.useState(false)
-  const [car, setCar] = React.useState(null)
+  const {show, CarInfo} = useCarInfo()
 
   const getConnectedDevices = async type => {
     const devices = await navigator.mediaDevices.enumerateDevices();
@@ -27,7 +27,7 @@ export const Capture = () => {
   const capturePhoto = async () => {
     setWasCaptured(true)
 
-    const imageCapture = new ImageCapture(stream.getVideoTracks()[0])
+    const imageCapture = new ImageCapture(stream.current.getVideoTracks()[0])
     const imageBitmap = await imageCapture.grabFrame()
 
     canvas.current.width = imageBitmap.width
@@ -50,9 +50,10 @@ export const Capture = () => {
       .then(response => response.json())
       .then(result => {
         const {make, model} = result.objects[0].vehicleAnnotation.attributes.system
-        setCar({make: make.name, model: model.name})
 
         setWasCaptured(false)
+        
+        show(make.name, model.name)
       })
       .catch(error => alert(error))
   }
@@ -60,12 +61,12 @@ export const Capture = () => {
   React.useEffect(() => {
     getConnectedDevices('videoinput')
       .then(async cameras => {
-        const stream = await openCamera(cameras[1].deviceId)
+        const newStream = await openCamera(cameras[1].deviceId)
         if (video.current) {
-          video.current.srcObject = stream
+          video.current.srcObject = newStream
         }
   
-        setStream(stream)
+        stream.current = newStream
       })
   }, [wasCaptured])
 
@@ -82,7 +83,8 @@ export const Capture = () => {
           onClick={capturePhoto}
         />
       </div>
-      {car && <CarInfo make={car.make} model={car.model} onClose={() => setCar(null)}/>}
+
+      <CarInfo />
     </>
   )
 }

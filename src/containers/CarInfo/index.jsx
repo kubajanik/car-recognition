@@ -1,25 +1,26 @@
 import React from 'react'
+import {createPortal} from 'react-dom'
 import styles from './style.module.css'
 import {IoMdClose, IoMdHeartEmpty} from 'react-icons/io'
 import db from '../../db'
 
-export const CarInfo = ({make, model, onClose}) => {
+const CarInfoModal = ({make, model, onClose}) => {
   const [car, setCar] = React.useState(null)
-
+  
   React.useEffect(() => {
     window.fetch(`/.netlify/functions/car-info?make=${make}&model=${model}`)
       .then(res => res.json())
       .then(json => setCar(json))
       .catch(err => alert(err))
   }, [])
-
+  
   React.useEffect(() => {
     if (car) {
-      db.history.put(car)
+      db.history.put({...car, date: new Date()})
     }
   }, [car])
-
-  return (
+  
+  return createPortal(
     <div className={styles.modal} >
       <div>
         <IoMdHeartEmpty />
@@ -27,6 +28,20 @@ export const CarInfo = ({make, model, onClose}) => {
         <IoMdClose onClick={onClose} />
       </div>
       <img src={car?.image} alt=""/>
-    </div>
+    </div>,
+    document.getElementById('modal')
   )
 }
+
+export const useCarInfo = () => {
+  const [car, setCar] = React.useState(null)
+
+  const show = (make, model) => setCar({make, model})
+  const hide = () => setCar(null)
+
+  const CarInfo = () => (
+    car ? <CarInfoModal make={car.make} model={car.model} onClose={hide} /> : null
+  )
+
+  return {show, CarInfo}
+} 
