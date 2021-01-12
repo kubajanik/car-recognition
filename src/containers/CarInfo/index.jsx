@@ -24,7 +24,7 @@ const CarInfoModal = ({make, model, onClose}) => {
     }
 
     fetch()
-  }, [])
+  }, [make, model])
   
   return createPortal(
     <div className={styles.modal} >
