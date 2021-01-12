@@ -8,17 +8,23 @@ const CarInfoModal = ({make, model, onClose}) => {
   const [car, setCar] = React.useState(null)
   
   React.useEffect(() => {
-    window.fetch(`/.netlify/functions/car-info?make=${make}&model=${model}`)
-      .then(res => res.json())
-      .then(json => setCar(json))
-      .catch(err => alert(err))
-  }, [])
-  
-  React.useEffect(() => {
-    if (car) {
-      db.history.put({...car, date: new Date()})
+    const fetch = async () => {
+      let car = await db.history.where({make, model}).first()
+      if (car) {
+        setCar(car)
+        return
+      }
+
+      const response = await fetch(`/.netlify/functions/car-info?make=${make}&model=${model}`)
+      car = await response.json()
+      if (car) {
+        setCar(car)
+        db.history.put(car)
+      }
     }
-  }, [car])
+
+    fetch()
+  }, [])
   
   return createPortal(
     <div className={styles.modal} >

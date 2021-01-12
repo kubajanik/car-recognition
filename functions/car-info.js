@@ -13,7 +13,8 @@ exports.handler = async event => {
     body: JSON.stringify({
       make,
       model,
-      image: 'https:' + src
+      image: 'https:' + src,
+      date: new Date()
     })
   }
 }
