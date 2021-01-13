@@ -12,9 +12,9 @@ export const Navigation = () => (
       <FaHome />
       Home
     </Link>
-    <Link to="/favorites">
+    <Link to="/favorite">
       <FaRegHeart />
-      Favorites
+      Favorite
     </Link>
     <Link to="/capture">
       <IoMdQrScanner />
