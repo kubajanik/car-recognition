@@ -1,11 +1,12 @@
 import React from 'react'
 import {createPortal} from 'react-dom'
 import styles from './style.module.css'
-import {IoMdClose, IoMdHeartEmpty} from 'react-icons/io'
+import {IoMdClose, IoMdHeartEmpty, IoMdHeart} from 'react-icons/io'
 import db from '../../db'
 
 const CarInfoModal = ({make, model, onClose}) => {
   const [car, setCar] = React.useState(null)
+  const [isFavorite, setIsFavorite] = React.useState(false)
   
   React.useEffect(() => {
     const fetch = async () => {
@@ -24,16 +25,31 @@ const CarInfoModal = ({make, model, onClose}) => {
     }
 
     fetch()
-  }, [])
+  }, [make, model])
+
+  React.useEffect(() => {
+    db.favorite.get({make, model})
+      .then(car => setIsFavorite(Boolean(car)))
+  }, [make, model])
+
+  const favorite = async () => {
+    await db.favorite.put(car)
+    setIsFavorite(true)
+  }
+
+  const unfavorite = async () => {
+    await db.favorite.where({make, model}).delete()
+    setIsFavorite(false)
+  }
   
   return createPortal(
     <div className={styles.modal} >
       <div>
-        <IoMdHeartEmpty />
+        {isFavorite ? <IoMdHeart onClick={unfavorite} /> : <IoMdHeartEmpty onClick={favorite} />}
         <h2>{make} {model}</h2>
         <IoMdClose onClick={onClose} />
       </div>
-      <img src={car?.image} alt=""/>
+      <img src={car?.image} alt="" />
     </div>,
     document.getElementById('modal')
   )
