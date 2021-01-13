@@ -9,13 +9,13 @@ const CarInfoModal = ({make, model, onClose}) => {
   
   React.useEffect(() => {
     const fetch = async () => {
-      let car = await db.history.where({make, model}).first()
+      let car = await db.history.get({make, model})
       if (car) {
         setCar(car)
         return
       }
 
-      const response = await fetch(`/.netlify/functions/car-info?make=${make}&model=${model}`)
+      const response = await window.fetch(`/.netlify/functions/car-info?make=${make}&model=${model}`)
       car = await response.json()
       if (car) {
         setCar(car)
@@ -24,7 +24,7 @@ const CarInfoModal = ({make, model, onClose}) => {
     }
 
     fetch()
-  }, [make, model])
+  }, [])
   
   return createPortal(
     <div className={styles.modal} >
