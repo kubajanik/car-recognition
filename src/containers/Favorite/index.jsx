@@ -1,6 +1,6 @@
 import React from 'react'
 import db from '../../db'
-import styles from './style.module.css'
+import styles from './style.module.scss'
 import {useCarInfo} from '../CarInfo'
 
 export const Favorite = () => {

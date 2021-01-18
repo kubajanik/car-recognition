@@ -1,6 +1,6 @@
 import React from 'react'
 import {createPortal} from 'react-dom'
-import styles from './style.module.css'
+import styles from './style.module.scss'
 import {IoMdClose, IoMdHeartEmpty, IoMdHeart} from 'react-icons/io'
 import db from '../../db'
 

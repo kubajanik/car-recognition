@@ -1,6 +1,6 @@
 import React from 'react'
 import {useInstallPrompt} from '../../hooks'
-import styles from './style.module.css'
+import styles from './style.module.scss'
 
 export const Home = () => {
   const install = useInstallPrompt()

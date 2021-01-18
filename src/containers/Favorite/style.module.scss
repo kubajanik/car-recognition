@@ -1,0 +1,40 @@
+.favorite {
+  height: 100%;
+  background-color: #fff;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: max-content;
+  grid-auto-rows: max-content;
+  gap: 1rem;
+  padding: 1rem;
+  box-sizing: border-box;
+
+  h2 {
+    font-weight: normal;
+    grid-column: 1 / span 2;
+    margin: 0;
+    text-align: center;
+    color: #2f3137;
+  }
+  
+  &::after {
+    content: "";
+    height: 0.01rem;
+    grid-column: span 2;
+  }
+  
+  div {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: #2f313733 0px 7px 29px 0px;
+    display: grid;
+    place-items: center;
+  }
+  
+  div > img {
+    object-fit: contain;
+    width: 90%;
+    min-height: 100%;
+  }
+}

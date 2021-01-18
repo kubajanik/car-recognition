@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './style.module.css'
+import styles from './style.module.scss'
 import {IoIosQrScanner as CaptureIcon} from 'react-icons/io'
 import {useCarInfo} from '../CarInfo'
 

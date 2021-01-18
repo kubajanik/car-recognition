@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './App.module.css'
+import styles from './App.module.scss'
 import {Navigation} from './components/Navigation'
 import {Router} from '@reach/router'
 import {Capture} from './containers/Capture'
@@ -10,7 +10,7 @@ import {Favorite} from './containers/Favorite'
 export default function App() {
   return (
     <div className={styles.container}>
-      <Router>
+      <Router className={styles.router}>
         <Home path="/" />
         <Favorite path="/favorite" />
         <Capture path="/capture" />

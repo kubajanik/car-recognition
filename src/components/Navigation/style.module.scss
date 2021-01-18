@@ -1,0 +1,31 @@
+.navigation {
+  display: flex;
+  background-color: #fff;
+  height: 3.5rem;
+  box-shadow: #2f313733 0px -7px 29px 0px;
+
+  a {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #2f3137;
+    font-size: 0.65rem;
+  }
+  
+  a[aria-current] {
+    color: #fd3f3f;
+  }
+  
+  a > svg {
+    font-size: 1.65rem;
+  }
+
+  @media (orientation: landscape) {
+    flex-direction: column;
+    width: 3.5rem;
+    height: 100%;
+  }
+}
