@@ -4,13 +4,12 @@ import styles from './style.module.scss'
 import {IoMdClose} from 'react-icons/io'
 import db from '../../db'
 
-export const CarsGrid = ({cars, title, onRemove, removable = false}) => {
+export const CarsGrid = ({cars, title, removable = false}) => {
   const {show, CarInfo} = useCarInfo()
 
   const unfavorite = async (e, car) => {
     e.stopPropagation()
     await db.favorite.where({...car}).delete()
-    onRemove()
   }
 
   return (

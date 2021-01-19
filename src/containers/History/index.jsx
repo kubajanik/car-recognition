@@ -1,18 +1,14 @@
 import React from 'react'
 import db from '../../db'
 import {CarsGrid} from '../../components/CarsGrid'
+import {useLiveQuery} from 'dexie-react-hooks'
 
 export const History = () => {
-  const [cars, setCars] = React.useState([])
+  const cars = useLiveQuery(() => db.history.reverse().sortBy('date'))
 
-  React.useEffect(() => {
-    db.history
-      .orderBy('date')
-      .reverse()
-      .limit(20)
-      .toArray()
-      .then(cars => setCars(cars))
-  }, [])
+  if (!cars) {
+    return null
+  }
 
   return (
     <CarsGrid cars={cars} title="History" />

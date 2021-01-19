@@ -1,28 +1,19 @@
 import React from 'react'
 import db from '../../db'
 import {CarsGrid} from '../../components/CarsGrid'
+import {useLiveQuery} from 'dexie-react-hooks'
 
 export const Favorite = () => {
-  const [cars, setCars] = React.useState([])
+  const cars = useLiveQuery(() => db.favorite.reverse().sortBy('date'))
 
-  const fetchFavorites = () => {
-    db.favorite
-      .orderBy('date')
-      .reverse()
-      .limit(20)
-      .toArray()
-      .then(cars => setCars(cars))
+  if (!cars) {
+    return null
   }
-
-  React.useEffect(() => {
-   fetchFavorites()
-  }, [])
 
   return (
     <CarsGrid 
       cars={cars} 
       title="Favorite" 
-      onRemove={fetchFavorites} 
       removable 
     />
   )
