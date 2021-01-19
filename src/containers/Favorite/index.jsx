@@ -5,16 +5,25 @@ import {CarsGrid} from '../../components/CarsGrid'
 export const Favorite = () => {
   const [cars, setCars] = React.useState([])
 
-  React.useEffect(() => {
+  const fetchFavorites = () => {
     db.favorite
       .orderBy('date')
       .reverse()
       .limit(20)
       .toArray()
       .then(cars => setCars(cars))
+  }
+
+  React.useEffect(() => {
+   fetchFavorites()
   }, [])
 
   return (
-    <CarsGrid cars={cars} title="Favorite" />
+    <CarsGrid 
+      cars={cars} 
+      title="Favorite" 
+      onRemove={fetchFavorites} 
+      removable 
+    />
   )
 }

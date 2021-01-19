@@ -20,7 +20,7 @@ const CarInfoModal = ({make, model, onClose}) => {
       car = await response.json()
       if (car) {
         setCar(car)
-        db.history.put(car)
+        db.history.put({...car, date: new Date()})
       }
     }
 
@@ -33,7 +33,7 @@ const CarInfoModal = ({make, model, onClose}) => {
   }, [make, model])
 
   const favorite = async () => {
-    await db.favorite.put(car)
+    await db.favorite.put({...car, date: new Date()})
     setIsFavorite(true)
   }
 
