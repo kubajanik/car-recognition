@@ -43,13 +43,18 @@ const CarInfoModal = ({make, model, onClose}) => {
   }
   
   return createPortal(
-    <div className={styles.modal} >
-      <div>
-        {isFavorite ? <IoMdHeart onClick={unfavorite} /> : <IoMdHeartEmpty onClick={favorite} />}
-        <h2>{make} {model}</h2>
-        <IoMdClose onClick={onClose} />
-      </div>
-      <img src={car?.image} alt="" />
+    <div className={styles.modal} data-loading={!car}>
+      {car 
+        ? <>
+            <div >
+              {isFavorite ? <IoMdHeart onClick={unfavorite} /> : <IoMdHeartEmpty onClick={favorite} />}
+              <h2>{make} {model}</h2>
+              <IoMdClose onClick={onClose} />
+            </div>
+            <img src={car?.image} alt="" />
+          </>
+        : <img className={styles.loader} src="icon-192.png" alt="loader"/>
+    }
     </div>,
     document.getElementById('modal')
   )
