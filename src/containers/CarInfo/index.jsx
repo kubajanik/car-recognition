@@ -1,10 +1,10 @@
 import React from 'react'
-import {createPortal} from 'react-dom'
 import styles from './style.module.scss'
 import {IoMdClose, IoMdHeartEmpty, IoMdHeart} from 'react-icons/io'
 import db from '../../db'
+import {navigate} from '@reach/router'
 
-const CarInfoModal = ({make, model, onClose}) => {
+export const CarInfo = ({make, model}) => {
   const [car, setCar] = React.useState(null)
   const [isFavorite, setIsFavorite] = React.useState(false)
   
@@ -42,33 +42,19 @@ const CarInfoModal = ({make, model, onClose}) => {
     setIsFavorite(false)
   }
   
-  return createPortal(
+  return (
     <div className={styles.modal} data-loading={!car}>
       {car 
         ? <>
             <div >
               {isFavorite ? <IoMdHeart onClick={unfavorite} /> : <IoMdHeartEmpty onClick={favorite} />}
               <h2>{make} {model}</h2>
-              <IoMdClose onClick={onClose} />
+              <IoMdClose onClick={() => navigate(-1)} />
             </div>
             <img src={car?.image} alt="" />
           </>
-        : <img className={styles.loader} src="icon-192.png" alt="loader"/>
-    }
-    </div>,
-    document.getElementById('modal')
+        : <img className={styles.loader} src="/icon-192.png" alt="loader"/>
+      }
+    </div>
   )
 }
-
-export const useCarInfo = () => {
-  const [car, setCar] = React.useState(null)
-
-  const show = (make, model) => setCar({make, model})
-  const hide = () => setCar(null)
-
-  const CarInfo = () => (
-    car ? <CarInfoModal make={car.make} model={car.model} onClose={hide} /> : null
-  )
-
-  return {show, CarInfo}
-} 

@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './style.module.scss'
 import {IoIosQrScanner as CaptureIcon} from 'react-icons/io'
-import {useCarInfo} from '../CarInfo'
+import {navigate} from '@reach/router'
 
 export const Capture = () => {
   const video = React.useRef()
@@ -9,7 +9,6 @@ export const Capture = () => {
   
   const stream = React.useRef()
   const [wasCaptured, setWasCaptured] = React.useState(false)
-  const {show, CarInfo} = useCarInfo()
 
   const getConnectedDevices = async type => {
     const devices = await navigator.mediaDevices.enumerateDevices();
@@ -53,7 +52,7 @@ export const Capture = () => {
 
         setWasCaptured(false)
         
-        show(make.name, model.name)
+        navigate(`car/${make.name}/${model.name}`)
       })
       .catch(error => alert(error))
   }
@@ -71,20 +70,16 @@ export const Capture = () => {
   }, [wasCaptured])
 
   return (
-    <>
-      <div className={styles.capture}>
-        {wasCaptured ?
-          <canvas ref={canvas} /> :
-          <video autoPlay ref={video} />
-        }
+    <div className={styles.capture}>
+      {wasCaptured ?
+        <canvas ref={canvas} /> :
+        <video autoPlay ref={video} />
+      }
 
-        <CaptureIcon 
-          className={wasCaptured && styles.animate} 
-          onClick={capturePhoto}
-        />
-      </div>
-
-      <CarInfo />
-    </>
+      <CaptureIcon 
+        className={wasCaptured && styles.animate} 
+        onClick={capturePhoto}
+      />
+    </div>
   )
 }
