@@ -1,10 +1,7 @@
 import React from 'react'
-import {useInstallPrompt} from '../../hooks'
 import styles from './style.module.scss'
 
-export const Home = () => {
-  const install = useInstallPrompt()
-
+export const Home = ({install, prompt}) => {
   return (
     <div className={styles.home}>
       <div></div>
@@ -16,7 +13,7 @@ export const Home = () => {
         <p>Search in the physical world</p>
       </div>
 
-      <button onClick={install}>Install</button>
+      <button onClick={install} style={{opacity: prompt && 100}}>Install</button>
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 
 export const useInstallPrompt = () => {
-  const [event, setEvent] = React.useState()
+  const [event, setEvent] = React.useState(null)
 
   const ready = event => {
     event.preventDefault()
@@ -16,5 +16,5 @@ export const useInstallPrompt = () => {
     return () => window.removeEventListener('beforeinstallprompt', ready)
   }, [])
 
-  return install
+  return [event, install]
 }
