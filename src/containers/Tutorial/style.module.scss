@@ -1,0 +1,68 @@
+.tutorial {
+  background-color: #fff;
+  display: grid;
+  grid-template-rows: auto 4rem;
+  place-items: center;
+  padding: 2rem;
+  height: calc(var(--vh, 1vh) * 100);
+  box-sizing: border-box;
+}
+
+.step {
+  text-align: center;
+
+  h1 {
+    color: #fd3f3f;
+    font-weight: 600;
+    font-family: 'Bangers', cursive;
+    letter-spacing: 0.25rem;
+    margin: 0.5rem;
+  }
+
+  h2 {
+    color: #fd3f3f;
+    font-weight: 500;
+  }
+
+  p {
+    font-size: 0.85rem;
+    color: #2f3137;
+  }
+
+  img + p {
+    margin-top: 1rem;
+  }
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+
+  span {
+    font-family: none;
+    font-size: 1.5rem;
+    color: darken(#f0f1f8, 5%);
+
+    &[data-active=true] {
+      color: #fd3f3f;
+    }
+  }
+}
+
+button.skip {
+  color: #fd3f3f;
+  background-color: #fff;
+  box-shadow: #2f313733 0px 7px 29px 0px;
+  padding: 0.5rem 2rem;
+  border-radius: 0.5rem;
+  border: 0;
+  font-weight: 600;
+  font-family: inherit;
+  font-size: 0.85rem;
+
+  &:focus {
+    outline: none;
+  }
+}

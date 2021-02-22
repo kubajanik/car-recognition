@@ -8,6 +8,7 @@ import {Home} from './containers/Home'
 import {Favorite} from './containers/Favorite'
 import {CarInfo} from './containers/CarInfo'
 import {AppPresentation} from './containers/AppPresentation'
+import {Tutorial} from './containers/Tutorial'
 import {useInstallPrompt} from './hooks'
 import isMobile from 'ismobilejs'
 
@@ -16,6 +17,10 @@ export default function App() {
 
   if (!isMobile(window.navigator).any) {
     return <AppPresentation />
+  }
+
+  if (window.localStorage.getItem('tutorial-skipped') === null) {
+    return <Tutorial />
   }
 
   return (
