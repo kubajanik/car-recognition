@@ -32,20 +32,7 @@
   }
   
   button {
-    color: #fd3f3f;
-    background-color: #fff;
-    box-shadow: #2f313733 0px 7px 29px 0px;
-    padding: 0.5rem 2rem;
-    border-radius: 0.5rem;
-    border: 0;
-    font-weight: 600;
-    font-family: inherit;
-    font-size: 0.85rem;
     opacity: 0;
-
-    &:focus {
-      outline: none;
-    }
 
     @media all and (display-mode: standalone) {
       visibility: hidden;

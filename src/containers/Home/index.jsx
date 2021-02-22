@@ -1,4 +1,5 @@
 import React from 'react'
+import {Button} from '../../components/Button'
 import styles from './style.module.scss'
 
 export const Home = ({install, prompt}) => {
@@ -13,7 +14,7 @@ export const Home = ({install, prompt}) => {
         <p>Search in the physical world</p>
       </div>
 
-      <button onClick={install} style={{opacity: prompt && 100}}>Install</button>
+      <Button onClick={install} style={{opacity: prompt && 100}}>Install</Button>
     </div>
   )
 }

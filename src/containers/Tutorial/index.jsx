@@ -1,5 +1,6 @@
 import React from 'react'
 import {useSwipeable} from 'react-swipeable'
+import {Button} from '../../components/Button'
 import styles from './style.module.scss'
 
 export const Tutorial = () => {
@@ -35,8 +36,8 @@ export const Tutorial = () => {
         setCurrent(current - 1)
       }
     },
-    onTap: () => {
-      if (current < steps.length - 1) {
+    onTap: ({event}) => {
+      if (event.target.tagName !== 'BUTTON' && current < steps.length - 1) {
         setCurrent(current + 1)
       }
     }
@@ -60,7 +61,7 @@ export const Tutorial = () => {
           ))}
         </div>
 
-        <button className={styles.skip} onClick={() => skip()}>Skip tutorial</button>
+        <Button onClick={() => skip()}>Skip tutorial</Button>
       </div>
     </div>
   )
