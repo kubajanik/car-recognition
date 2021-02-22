@@ -45,16 +45,22 @@ export const Capture = () => {
       body: image
     }
 
-    fetch('https://dev.sighthoundapi.com/v1/recognition?objectType=vehicle', requestOptions)
-      .then(response => response.json())
-      .then(result => {
-        const {make, model} = result.objects[0].vehicleAnnotation.attributes.system
+    try {
+      const response = await fetch('https://dev.sighthoundapi.com/v1/recognition?objectType=vehicle', requestOptions)
+      const {objects} = await response.json()
 
-        setWasCaptured(false)
-        
-        navigate(`car/${make.name}/${model.name}`)
-      })
-      .catch(error => alert(error))
+      if (!objects.length) {
+        return alert('Not recognized')
+      }
+
+      const {make, model} = objects[0].vehicleAnnotation.attributes.system
+  
+      navigate(`car/${make.name}/${model.name}`)
+    } catch (err) {
+      console.log(err)
+    } finally {
+      setWasCaptured(false)
+    }
   }
 
   React.useEffect(() => {
