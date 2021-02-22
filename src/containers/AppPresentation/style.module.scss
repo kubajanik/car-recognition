@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+.presentation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem;
+  
+  h1 {
+    font-family: 'Bangers', cursive;
+    font-weight: 600;
+    letter-spacing: 0.25rem;
+    font-size: 4rem;
+    color: #fd3f3f;
+    margin: 0;
+  }
+
+  p {
+    color: #2f3137;
+    font-size: 1.5rem;
+    margin: 0;
+  }
+}
