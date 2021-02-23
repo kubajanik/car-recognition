@@ -10,6 +10,11 @@
 
 .step {
   text-align: center;
+  display: none;
+
+  &[data-active=true] {
+    display: block;
+  }
 
   h1 {
     color: #fd3f3f;
