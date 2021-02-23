@@ -1,15 +1,19 @@
 {
   "name": "Car Recognition",
+  "short_name": "CarRec",
   "start_url": "/",
   "display": "standalone",
+  "background_color": "#fff",
+  "theme_color": "#fd3f3f",
   "icons": [
     {
-      "src": "/icon-192.png",
+      "src": "/images/icon-192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "maskable"
     },
     {
-      "src": "/icon-512.png",
+      "src": "/images/icon-512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
