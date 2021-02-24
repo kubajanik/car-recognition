@@ -3,6 +3,8 @@ import styles from './style.module.scss'
 import {IoMdClose, IoMdHeartEmpty, IoMdHeart} from 'react-icons/io'
 import db from '../../db'
 import {navigate} from '@reach/router'
+import Logo from '../../images/logo.png'
+import {CarItem} from '../../components/CarItem'
 
 export const CarInfo = ({make, model}) => {
   const [car, setCar] = React.useState(null)
@@ -10,6 +12,8 @@ export const CarInfo = ({make, model}) => {
   
   React.useEffect(() => {
     const fetch = async () => {
+      setCar(null)
+
       let car = await db.history.get({make, model})
       if (car) {
         setCar(car)
@@ -46,14 +50,21 @@ export const CarInfo = ({make, model}) => {
     <div className={styles.modal} data-loading={!car}>
       {car 
         ? <>
-            <div >
+            <div className={styles.topbar}>
               {isFavorite ? <IoMdHeart onClick={unfavorite} /> : <IoMdHeartEmpty onClick={favorite} />}
-              <h2>{make} {model}</h2>
               <IoMdClose onClick={() => navigate(-1)} />
             </div>
-            <img src={car?.image} alt="" />
+            <img className={styles.image} src={car?.image} alt="" />
+
+            <h2>{make} {model}</h2>
+
+            <div className={styles.similar}>
+              {car.similar.map((car, index) => (
+                <CarItem car={car} key={index} />
+              ))}
+            </div>
           </>
-        : <img className={styles.loader} src="/icon-192.png" alt="loader"/>
+        : <img className={styles.loader} src={Logo} alt="loader"/>
       }
     </div>
   )

@@ -1,13 +1,12 @@
 import React from 'react'
-import styles from './style.module.scss'
-import {IoMdClose} from 'react-icons/io'
+import {CarItem} from '../CarItem'
 import db from '../../db'
-import {navigate} from '@reach/router'
+import styles from './style.module.scss'
 
 export const CarsGrid = ({cars, title, removable = false}) => {
-  const unfavorite = async (e, car) => {
+  const unfavorite = async (e, {make, model}) => {
     e.stopPropagation()
-    await db.favorite.where({...car}).delete()
+    await db.favorite.where({make, model}).delete()
   }
 
   return (
@@ -15,14 +14,12 @@ export const CarsGrid = ({cars, title, removable = false}) => {
       <h2>{title}</h2>
       
       {cars.map((car, index) => (
-        <div 
+        <CarItem 
+          car={car} 
           key={index} 
-          onClick={() => navigate(`car/${car.make}/${car.model}`)}
-          className={styles.item}
-        >
-          <img src={car.image} alt="car" />
-          {removable && <IoMdClose className={styles.close} onClick={e => unfavorite(e, car)} />}
-        </div>
+          onRemove={unfavorite}
+          removable={removable}
+        />
       ))}
     </div>
   )
