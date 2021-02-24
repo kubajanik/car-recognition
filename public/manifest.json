@@ -1,6 +1,6 @@
 {
   "name": "Car Recognition",
-  "short_name": "CarRec",
+  "short_name": "Car Recognition",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#fff",
@@ -9,8 +9,7 @@
     {
       "src": "/images/icon-192.png",
       "type": "image/png",
-      "sizes": "192x192",
-      "purpose": "maskable"
+      "sizes": "192x192"
     },
     {
       "src": "/images/icon-512.png",
