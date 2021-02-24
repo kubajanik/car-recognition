@@ -1,0 +1,21 @@
+.item {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: #2f313733 0px 7px 29px 0px;
+  display: grid;
+  place-items: center;
+  position: relative;
+
+  img {
+    object-fit: contain;
+    width: 90%;
+  }
+}
+
+.close {
+  position: absolute;
+  right: 0.3rem;
+  top: 0.3rem;
+  color: #fd3f3f;
+  font-size: 1.5rem;
+}
