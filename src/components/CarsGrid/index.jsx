@@ -1,5 +1,6 @@
 import React from 'react'
 import {CarItem} from '../CarItem'
+import {Header} from '../Header'
 import db from '../../db'
 import styles from './style.module.scss'
 
@@ -10,17 +11,18 @@ export const CarsGrid = ({cars, title, removable = false}) => {
   }
 
   return (
-    <div className={styles.grid}>
-      <h2>{title}</h2>
-      
-      {cars.map((car, index) => (
-        <CarItem 
-          car={car} 
-          key={index} 
-          onRemove={unfavorite}
-          removable={removable}
-        />
-      ))}
-    </div>
+    <>
+      <Header>{title}</Header>
+      <div className={styles.grid}>
+        {cars.map((car, index) => (
+          <CarItem 
+            car={car} 
+            key={index} 
+            onRemove={unfavorite}
+            removable={removable}
+          />
+        ))}
+      </div>
+    </>
   )
 }

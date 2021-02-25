@@ -1,8 +1,8 @@
 .navigation {
   display: flex;
-  background-color: #fff;
+  background-color: var(--background-color);
   height: 3.5rem;
-  box-shadow: #2f313733 0px -7px 29px 0px;
+  box-shadow: var(--primary-shadow);
 
   a {
     flex: 1;
@@ -11,12 +11,12 @@
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    color: #2f3137;
+    color: var(--text-color);
     font-size: 0.65rem;
   }
   
   a[aria-current] {
-    color: #fd3f3f;
+    color: var(--primary-color);
   }
   
   a > svg {

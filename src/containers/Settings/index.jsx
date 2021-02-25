@@ -7,7 +7,7 @@ export const Settings = () => {
   const [theme, setTheme] = React.useState('light')
 
   React.useEffect(() => {
-    document.body.dataset.theme = theme
+    document.body.dataset.dark = theme === 'dark'
   }, [theme])
 
   return (

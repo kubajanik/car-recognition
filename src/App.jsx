@@ -9,8 +9,10 @@ import {Favorite} from './containers/Favorite'
 import {CarInfo} from './containers/CarInfo'
 import {AppPresentation} from './containers/AppPresentation'
 import {Tutorial} from './containers/Tutorial'
+import {Settings} from './containers/Settings'
 import {useInstallPrompt} from './hooks'
 import isMobile from 'ismobilejs'
+import './style.css'
 
 export default function App() {
   const [prompt, install] = useInstallPrompt()
@@ -30,6 +32,7 @@ export default function App() {
         <Favorite path="/favorite" />
         <Capture path="/capture" />
         <History path="/history" />
+        <Settings path="/settings" />
         <CarInfo path="/car/:make/:model" />
       </Router>
       <Navigation />

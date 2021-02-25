@@ -1,7 +1,7 @@
 button.button {
-  color: #fd3f3f;
-  background-color: #fff;
-  box-shadow: #2f313733 0px 7px 29px 0px;
+  color: var(--primary-color);
+  background-color: var(--background-color);
+  box-shadow: var(--primary-shadow);
   padding: 0.5rem 2rem;
   border-radius: 0.5rem;
   border: 0;

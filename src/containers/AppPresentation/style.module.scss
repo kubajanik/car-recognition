@@ -12,12 +12,12 @@
     font-weight: 600;
     letter-spacing: 0.25rem;
     font-size: 4rem;
-    color: #fd3f3f;
+    color: var(--primary-color);
     margin: 0;
   }
 
   p {
-    color: #2f3137;
+    color: var(--text-color);
     font-size: 1.5rem;
     margin: 0;
   }

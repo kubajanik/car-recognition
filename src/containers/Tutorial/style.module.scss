@@ -1,5 +1,5 @@
 .tutorial {
-  background-color: #fff;
+  background-color: var(--background-color);
   display: grid;
   grid-template-rows: auto 4rem;
   place-items: center;
@@ -17,7 +17,7 @@
   }
 
   h1 {
-    color: #fd3f3f;
+    color: var(--primary-color);
     font-weight: 600;
     font-family: 'Bangers', cursive;
     letter-spacing: 0.25rem;
@@ -25,13 +25,13 @@
   }
 
   h2 {
-    color: #fd3f3f;
+    color: var(primary-color);
     font-weight: 500;
   }
 
   p {
     font-size: 0.85rem;
-    color: #2f3137;
+    color: var(--text-color);
   }
 
   img + p {
@@ -51,7 +51,7 @@
     color: darken(#f0f1f8, 5%);
 
     &[data-active=true] {
-      color: #fd3f3f;
+      color: var(--primary-color);
     }
   }
 }

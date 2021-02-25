@@ -1,6 +1,6 @@
 .grid {
   height: 100%;
-  background-color: #fff;
+  background-color: var(--background-color);
   overflow-y: auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -10,14 +10,6 @@
   padding: 1rem;
   box-sizing: border-box;
 
-  h2 {
-    font-weight: normal;
-    grid-column: 1 / span 2;
-    margin: 0;
-    text-align: center;
-    color: #2f3137;
-  }
-  
   &::after {
     content: "";
     height: 0.01rem;

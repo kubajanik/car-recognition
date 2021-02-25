@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 
 .home {
+  background-color: var(--background-color);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -20,11 +21,11 @@
   
   p {
     font-size: 0.85rem;
-    color: #2f3137;
+    color: var(--text-color);
   }
   
   h1 {
-    color: #fd3f3f;
+    color: var(--primary-color);
     font-weight: 600;
     font-family: 'Bangers', cursive;
     letter-spacing: 0.25rem;

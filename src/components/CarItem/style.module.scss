@@ -1,7 +1,7 @@
 .item {
-  background-color: #fff;
+  background-color: var(--background-color);
   border-radius: 0.5rem;
-  box-shadow: #2f313733 0px 7px 29px 0px;
+  box-shadow: var(--primary-shadow);
   display: grid;
   place-items: center;
   position: relative;
@@ -16,6 +16,6 @@
   position: absolute;
   right: 0.3rem;
   top: 0.3rem;
-  color: #fd3f3f;
+  color: var(--primary-color);
   font-size: 1.5rem;
 }
