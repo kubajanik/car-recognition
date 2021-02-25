@@ -1,0 +1,14 @@
+.toggle {
+  display: flex;
+  gap: 1rem;
+
+  button {
+    padding: 0.25rem 1rem;
+    font-weight: normal;
+  }
+
+  [data-on=false] {
+    box-shadow: unset;
+    color: var(--text-color);
+  }
+}
