@@ -1,4 +1,4 @@
-.toggle {
+.choices {
   display: flex;
   gap: 1rem;
 
@@ -7,7 +7,7 @@
     font-weight: normal;
   }
 
-  [data-on=false] {
+  [data-current=false] {
     box-shadow: unset;
     color: var(--text-color);
   }
