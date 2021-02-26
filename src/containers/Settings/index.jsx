@@ -1,14 +1,11 @@
 import React from 'react'
+import useDarkMode from 'use-dark-mode'
 import {Header} from '../../components/Header'
 import {Toggle} from '../../components/Toggle'
 import styles from './style.module.scss'
 
 export const Settings = () => {
-  const [theme, setTheme] = React.useState('light')
-
-  React.useEffect(() => {
-    document.body.dataset.dark = theme === 'dark'
-  }, [theme])
+  const darkMode = useDarkMode()
 
   return (
     <div className={styles.settings}>
@@ -16,7 +13,7 @@ export const Settings = () => {
 
       <div>
         <div>Dark Mode</div>
-        <Toggle on={theme === 'dark'} onChange={value => setTheme(value ? 'dark' : 'light')} />
+        <Toggle on={darkMode.value} onChange={darkMode.toggle} />
       </div>
     </div>
   )

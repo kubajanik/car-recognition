@@ -16,7 +16,8 @@
     "react-icons": "^4.1.0",
     "react-scripts": "4.0.1",
     "react-swipeable": "^6.0.1",
-    "sass": "^1.32.4"
+    "sass": "^1.32.4",
+    "use-dark-mode": "^2.3.1"
   },
   "scripts": {
     "dev": "npm-run-all --parallel netlify localtunnel",

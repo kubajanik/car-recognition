@@ -12,10 +12,12 @@ import {Tutorial} from './containers/Tutorial'
 import {Settings} from './containers/Settings'
 import {useInstallPrompt} from './hooks'
 import isMobile from 'ismobilejs'
+import useDarkMode from 'use-dark-mode'
 import './style.css'
 
 export default function App() {
   const [prompt, install] = useInstallPrompt()
+  useDarkMode()
 
   if (!isMobile(window.navigator).any) {
     return <AppPresentation />
