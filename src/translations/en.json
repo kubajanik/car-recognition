@@ -1,0 +1,25 @@
+{
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "english": "English",
+    "polish": "Polish",
+    "dark-mode": "Dark Mode",
+    "on": "On",
+    "off": "Off"
+  },
+  "history": {
+    "title": "History"
+  },
+  "favorite": {
+    "title": "Favorite"
+  },
+  "home": {
+    "title": "Home",
+    "welcome": "Welcome to",
+    "install": "Install"
+  },
+  "capture": {
+    "title": "Capture"
+  }
+}

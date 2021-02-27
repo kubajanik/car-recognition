@@ -1,0 +1,25 @@
+{
+  "settings": {
+    "title": "Ustawienia",
+    "language": "Język",
+    "english": "Angielski",
+    "polish": "Polski",
+    "dark-mode": "Tryb ciemny",
+    "on": "Wł.",
+    "off": "Wył."
+  },
+  "history": {
+    "title": "Historia"
+  },
+  "favorite": {
+    "title": "Ulubione"
+  },
+  "home": {
+    "title": "Start",
+    "welcome": "Witaj w",
+    "install": "Zainstaluj"
+  },
+  "capture": {
+    "title": "Przechwyć"
+  }
+}

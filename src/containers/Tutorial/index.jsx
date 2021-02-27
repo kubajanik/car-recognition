@@ -14,7 +14,6 @@ export const Tutorial = () => {
       <img src={Logo} alt="logo" width="100" />
       <p>Welcome to</p>
       <h1>CAR RECOGNITION</h1>
-      <p>Search in the physical world</p>
     </>,
     <>
       <img src={Capture} alt="capture" width="100" />
