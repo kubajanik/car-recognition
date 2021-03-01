@@ -27,24 +27,24 @@
     animation: animation 1.75s infinite ease-in-out;
   }
 
-  @media (orientation: landscape) {
-    width: 100%;
+  // @media (orientation: landscape) {
+  //   width: 100%;
     
-    video, canvas {
-      position: fixed;
-      left: 0;
-      width: calc(100vw - 3.5rem);
-      height: 100vh;
-    }
+  //   video, canvas {
+  //     position: fixed;
+  //     left: 0;
+  //     width: calc(100vw - 3.5rem);
+  //     height: 100vh;
+  //   }
   
-    svg {
-      left: unset;
-      bottom: unset;
-      right: 2rem;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-  }
+  //   svg {
+  //     left: unset;
+  //     bottom: unset;
+  //     right: 2rem;
+  //     top: 50%;
+  //     transform: translateY(-50%);
+  //   }
+  // }
 }
 
 

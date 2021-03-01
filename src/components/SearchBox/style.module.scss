@@ -1,0 +1,34 @@
+.search {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: 1.5rem auto;
+  color: var(--text-color);
+  width: calc(100vw - 2.5rem);
+
+  svg {
+    font-size: 1.5rem;
+  }
+
+  input {
+    width: 0;
+    padding: 0;
+    border: 0;
+    transition: width 0.2s;
+    font-size: 1rem;
+    font-family: inherit;
+    color: var(--text-color);
+    
+    &::placeholder {
+      color: var(--text-color);
+    }
+
+    &:focus {
+      outline: 0;
+    }
+    
+    &[data-is-open=true] {
+      width: 100%;
+      border-bottom: 1px solid var(--text-color);
+    }
+  }
+}

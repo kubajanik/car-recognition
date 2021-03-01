@@ -17,6 +17,7 @@
     "react-multi-lang": "^2.1.1",
     "react-scripts": "4.0.1",
     "react-swipeable": "^6.0.1",
+    "react-use-search": "^0.2.5",
     "sass": "^1.32.4",
     "use-dark-mode": "^2.3.1"
   },
