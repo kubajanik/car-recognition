@@ -1,8 +1,8 @@
 import React from 'react'
 import {useSwipeable} from 'react-swipeable'
 import {Button} from '../../components/Button'
+import {Logo} from '../../components/Logo'
 import styles from './style.module.scss'
-import Logo from '../../images/logo.png'
 import Capture from '../../images/capture.png'
 import Favorite from '../../images/favorite.png'
 
@@ -11,7 +11,7 @@ export const Tutorial = () => {
 
   const steps = [
     <>
-      <img src={Logo} alt="logo" width="100" />
+      <Logo />
       <p>Welcome to</p>
       <h1>CAR RECOGNITION</h1>
     </>,

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Button} from '../../components/Button'
 import styles from './style.module.scss'
-import Logo from '../../images/logo.png'
+import {Logo} from '../../components/Logo'
 import {useTranslation} from 'react-multi-lang'
 
 export const Home = ({install, prompt}) => {
@@ -12,7 +12,7 @@ export const Home = ({install, prompt}) => {
       <div></div>
       
       <div>
-        <img src={Logo} alt="logo"/>
+        <Logo />
         <p>{t('home.welcome')}</p>
         <h1>CAR RECOGNITION</h1>
       </div>
