@@ -2,12 +2,15 @@ import React from 'react'
 import useDarkMode from 'use-dark-mode'
 import {Header} from '../../components/Header'
 import {Choices} from '../../components/Choices'
+import {ColorPicker} from '../../components/ColorPicker'
 import styles from './style.module.scss'
 import {useTranslation, setLanguage, getLanguage} from 'react-multi-lang'
+import {usePrimaryColor} from '../../hooks'
 
 export const Settings = () => {
   const darkMode = useDarkMode()
   const t = useTranslation()
+  const [color, setColor] = usePrimaryColor()
 
   return (
     <div className={styles.settings}>
@@ -37,6 +40,20 @@ export const Settings = () => {
             {value: true, label: t('settings.on')},
             {value: false, label: t('settings.off')}
           ]}
+        />
+      </div>
+
+      <div>
+        <div>{t('settings.color')}</div>
+        <ColorPicker
+          defaultColor={color}
+          colors={[
+            '#fd3f3f', 
+            '#0087ff', 
+            '#00a534', 
+            '#9c64ff'
+          ]}
+          onChange={color => setColor(color)}
         />
       </div>
     </div>

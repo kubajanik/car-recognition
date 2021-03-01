@@ -6,7 +6,8 @@
     "polish": "Polish",
     "dark-mode": "Dark Mode",
     "on": "On",
-    "off": "Off"
+    "off": "Off",
+    "color": "Primary Color"
   },
   "history": {
     "title": "History"
