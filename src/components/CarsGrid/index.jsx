@@ -28,7 +28,7 @@ export const CarsGrid = ({cars, title, clearAll, removable = false}) => {
         <VscTrash onClick={clearAll} />
       </div>
 
-      {cars.length === 0 ? (
+      {filteredCars.length === 0 ? (
         <Empty />
       ) : (
         <div className={styles.grid}>

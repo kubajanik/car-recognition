@@ -7,7 +7,7 @@ export const SearchBox = ({value, onChange}) => {
   const [isOpen, setIsOpen] = React.useState(false)
   const inputRef = React.useRef()
   const Icon = isOpen ? CgClose : IoIosSearch
-
+  
   return (
     <div className={styles.search}>
       <Icon 
@@ -23,6 +23,12 @@ export const SearchBox = ({value, onChange}) => {
         placeholder="Search for a car"
         ref={inputRef}
         data-is-open={isOpen} 
+        onBlur={e => {
+          setIsOpen(false)
+          
+          e.target.value = ''
+          onChange(e)
+        }}
         value={value} 
         onChange={onChange} 
       />  
