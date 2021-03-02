@@ -13,6 +13,10 @@ export const History = () => {
   }
 
   return (
-    <CarsGrid cars={cars} title={t('history.title')} />
+    <CarsGrid 
+      cars={cars} 
+      title={t('history.title')}
+      clearAll={() => db.history.clear()}
+    />
   )
 }

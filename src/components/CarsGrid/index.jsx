@@ -4,10 +4,11 @@ import {Header} from '../Header'
 import {SearchBox} from '../SearchBox'
 import {Empty} from '../Empty'
 import {useSearch} from 'react-use-search'
+import {VscTrash} from 'react-icons/vsc'
 import db from '../../db'
 import styles from './style.module.scss'
 
-export const CarsGrid = ({cars, title, removable = false}) => {
+export const CarsGrid = ({cars, title, clearAll, removable = false}) => {
   const [filteredCars, query, handleChange] = useSearch(
     cars, 
     ({make, model}, query) => (new RegExp(query, 'i')).test(make + ' ' + model), 
@@ -24,6 +25,7 @@ export const CarsGrid = ({cars, title, removable = false}) => {
       <div className={styles.top}>
         <SearchBox value={query} onChange={handleChange} />
         <Header>{title}</Header>
+        <VscTrash onClick={clearAll} />
       </div>
 
       {cars.length === 0 ? (

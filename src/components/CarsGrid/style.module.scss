@@ -1,7 +1,17 @@
-.top > :first-child {
-  position: absolute;
-  left: 1rem;
-  top: 1.5rem;
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  padding-top: 1rem;
+
+  h2 {
+    padding-top: 0;
+  }
+
+  svg:last-child {
+    font-size: 1.5rem;
+  }
 }
 
 .grid {

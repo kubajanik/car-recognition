@@ -17,6 +17,7 @@ export const Favorite = () => {
       cars={cars} 
       title={t('favorite.title')}
       removable 
+      clearAll={() => db.favorite.clear()}
     />
   )
 }

@@ -1,9 +1,7 @@
 .search {
-  display: grid;
-  gap: 0.5rem;
-  grid-template-columns: 1.5rem auto;
   color: var(--text-color);
-  width: calc(100vw - 2.5rem);
+  position: relative;
+  height: 1.5rem;
 
   svg {
     font-size: 1.5rem;
@@ -17,6 +15,8 @@
     font-size: 1rem;
     font-family: inherit;
     color: var(--text-color);
+    position: absolute;
+    left: 1.75rem;
     
     &::placeholder {
       color: var(--text-color);
@@ -27,7 +27,7 @@
     }
     
     &[data-is-open=true] {
-      width: 100%;
+      width: calc(100vw - 3.75rem);
       border-bottom: 1px solid var(--text-color);
     }
   }
