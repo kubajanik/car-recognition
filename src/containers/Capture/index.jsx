@@ -50,7 +50,7 @@ export const Capture = () => {
       const {objects} = await response.json()
 
       if (!objects.length) {
-        return alert('Not recognized')
+        return navigate('/car/error')
       }
 
       const {make, model} = objects[0].vehicleAnnotation.attributes.system

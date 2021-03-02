@@ -22,5 +22,9 @@
   },
   "capture": {
     "title": "Capture"
+  },
+  "car-error": {
+    "message": "We cannot recognize this car",
+    "button": "Go Back"
   }
 }

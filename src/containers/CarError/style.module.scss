@@ -1,0 +1,26 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem;
+
+  div {
+    text-align: center;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  svg {
+    color: var(--primary-color);
+    font-size: 5rem;
+  }
+}

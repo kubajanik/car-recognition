@@ -10,6 +10,7 @@ import {CarInfo} from './containers/CarInfo'
 import {AppPresentation} from './containers/AppPresentation'
 import {Tutorial} from './containers/Tutorial'
 import {Settings} from './containers/Settings'
+import {CarError} from './containers/CarError'
 import {useInstallPrompt, usePrimaryColor} from './hooks'
 import isMobile from 'ismobilejs'
 import useDarkMode from 'use-dark-mode'
@@ -38,6 +39,7 @@ export default function App() {
         <History path="/history" />
         <Settings path="/settings" />
         <CarInfo path="/car/:make/:model" />
+        <CarError path="/car/error" />
       </Router>
       <Navigation />
     </div>

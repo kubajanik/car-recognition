@@ -22,5 +22,9 @@
   },
   "capture": {
     "title": "Przechwyć"
+  },
+  "car-error": {
+    "message": "Nie możemy rozpoznać tego auta",
+    "button": "Powrót"
   }
 }
