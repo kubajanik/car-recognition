@@ -4,10 +4,10 @@
     "language": "Language",
     "english": "English",
     "polish": "Polish",
-    "dark-mode": "Dark Mode",
+    "dark-mode": "Dark mode",
     "on": "On",
     "off": "Off",
-    "color": "Primary Color"
+    "color": "Primary color"
   },
   "history": {
     "title": "History"
@@ -25,6 +25,10 @@
   },
   "car-error": {
     "message": "We cannot recognize this car",
-    "button": "Go Back"
+    "button": "Go back"
+  },
+  "cars-grid": {
+    "empty": "No cars to show",
+    "search": "Search for a car"
   }
 }

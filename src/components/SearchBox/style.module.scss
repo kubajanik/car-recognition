@@ -15,7 +15,9 @@
     font-size: 1rem;
     font-family: inherit;
     color: var(--text-color);
+    background-color: var(--background-color);
     position: absolute;
+    padding-bottom: 1px;
     left: 1.75rem;
     
     &::placeholder {

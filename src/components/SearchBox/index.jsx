@@ -1,27 +1,25 @@
 import React from 'react'
-import {IoIosSearch} from 'react-icons/io'
-import {CgClose} from 'react-icons/cg'
+import {IoIosSearch as SearchIcon} from 'react-icons/io'
+import {CgClose as CloseIcon} from 'react-icons/cg'
+import {useTranslation} from 'react-multi-lang'
 import styles from './style.module.scss'
 
 export const SearchBox = ({value, onChange}) => {
   const [isOpen, setIsOpen] = React.useState(false)
-  const inputRef = React.useRef()
-  const Icon = isOpen ? CgClose : IoIosSearch
+  const Icon = isOpen ? CloseIcon : SearchIcon
+  const t = useTranslation()
   
   return (
     <div className={styles.search}>
       <Icon 
-        onClick={() => {
+        onClick={e => {
           setIsOpen(!isOpen)
           
-          if (!isOpen) {
-            inputRef.current.focus()
-          }
+          e.target.nextElementSibling.focus()
         }}
       />
       <input 
-        placeholder="Search for a car"
-        ref={inputRef}
+        placeholder={t('cars-grid.search')}
         data-is-open={isOpen} 
         onBlur={e => {
           setIsOpen(false)

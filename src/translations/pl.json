@@ -26,5 +26,9 @@
   "car-error": {
     "message": "Nie możemy rozpoznać tego auta",
     "button": "Powrót"
+  },  
+  "cars-grid": {
+    "empty": "Brak aut",
+    "search": "Szukaj auta"
   }
 }
