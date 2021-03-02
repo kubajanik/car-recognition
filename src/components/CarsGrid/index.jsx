@@ -2,6 +2,7 @@ import React from 'react'
 import {CarItem} from '../CarItem'
 import {Header} from '../Header'
 import {SearchBox} from '../SearchBox'
+import {Empty} from '../Empty'
 import {useSearch} from 'react-use-search'
 import db from '../../db'
 import styles from './style.module.scss'
@@ -19,25 +20,26 @@ export const CarsGrid = ({cars, title, removable = false}) => {
   }
 
   return (
-    <> 
+    <>
       <div className={styles.top}>
-        <SearchBox 
-          value={query} 
-          onChange={handleChange} 
-        />
+        <SearchBox value={query} onChange={handleChange} />
         <Header>{title}</Header>
       </div>
 
-      <div className={styles.grid}>
-        {filteredCars.map((car, index) => (
-          <CarItem 
-            car={car} 
-            key={index} 
-            onRemove={unfavorite}
-            removable={removable}
-          />
-        ))}
-      </div>
+      {cars.length === 0 ? (
+        <Empty />
+      ) : (
+        <div className={styles.grid}>
+          {filteredCars.map((car, index) => (
+            <CarItem
+              car={car}
+              key={index}
+              onRemove={unfavorite}
+              removable={removable}
+            />
+          ))}
+        </div>
+      )}
     </>
-  )
+  );
 }
