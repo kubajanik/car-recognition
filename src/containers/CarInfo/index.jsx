@@ -3,8 +3,11 @@ import styles from './style.module.scss'
 import {IoMdClose, IoMdHeartEmpty, IoMdHeart} from 'react-icons/io'
 import db from '../../db'
 import {navigate} from '@reach/router'
-import Logo from '../../images/logo.png'
+import {Logo} from '../../components/Logo'
 import {CarItem} from '../../components/CarItem'
+import Carmax from '../../images/carmax.png'
+import Autotrader from '../../images/autotrader.png'
+import Truecar from '../../images/truecar.png'
 
 export const CarInfo = ({make, model}) => {
   const [car, setCar] = React.useState(null)
@@ -54,17 +57,38 @@ export const CarInfo = ({make, model}) => {
               {isFavorite ? <IoMdHeart onClick={unfavorite} /> : <IoMdHeartEmpty onClick={favorite} />}
               <IoMdClose onClick={() => navigate(-1)} />
             </div>
+
             <img className={styles.image} src={car?.image} alt="" />
 
-            <h2>{make} {model}</h2>
+            <div>
+              <h2>{make} {model}</h2>
 
-            <div className={styles.similar}>
-              {car.similar.map((car, index) => (
-                <CarItem car={car} key={index} />
-              ))}
+              <div className={styles.links}>
+                <div>
+                  <img src={Carmax} alt=""/>
+                  <a target="_blank" href={`https://www.otomoto.pl/osobowe/${make}/${model}`}>To the shop</a>
+                </div>
+                <div>
+                  <img src={Autotrader} alt=""/>
+                  <a target="_blank" href={`https://www.autotrader.com/cars-for-sale/all-cars/${make}/${model}`}>To the shop</a>
+                </div>
+                <div>
+                  <img src={Truecar} alt=""/>
+                  <a target="_blank" href={`https://www.truecar.com/used-cars-for-sale/listings/${make}/${model}`}>To the shop</a>
+                </div>
+              </div>
+
+              <div className={styles.similar}>
+                <h3>Similar results</h3>
+                <div>
+                  {car.similar.map((car, index) => (
+                    <CarItem car={car} key={index} />
+                  ))}
+                </div>
+              </div>
             </div>
           </>
-        : <img className={styles.loader} src={Logo} alt="loader"/>
+        : <Logo animated />
       }
     </div>
   )
