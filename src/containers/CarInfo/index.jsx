@@ -66,15 +66,15 @@ export const CarInfo = ({make, model}) => {
               <div className={styles.links}>
                 <div>
                   <img src={Carmax} alt=""/>
-                  <a target="_blank" href={`https://www.otomoto.pl/osobowe/${make}/${model}`}>To the shop</a>
+                  <a href={`https://www.otomoto.pl/osobowe/${make}/${model}`}>To the shop</a>
                 </div>
                 <div>
                   <img src={Autotrader} alt=""/>
-                  <a target="_blank" href={`https://www.autotrader.com/cars-for-sale/all-cars/${make}/${model}`}>To the shop</a>
+                  <a target="_blank" rel="noreferrer" href={`https://www.autotrader.com/cars-for-sale/all-cars/${make}/${model}`}>To the shop</a>
                 </div>
                 <div>
                   <img src={Truecar} alt=""/>
-                  <a target="_blank" href={`https://www.truecar.com/used-cars-for-sale/listings/${make}/${model}`}>To the shop</a>
+                  <a target="_blank" rel="noreferrer" href={`https://www.truecar.com/used-cars-for-sale/listings/${make}/${model}`}>To the shop</a>
                 </div>
               </div>
 
