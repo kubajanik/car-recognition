@@ -2,7 +2,7 @@
   height: 100%;
   position: relative;
 
-  video, canvas {
+  video {
     object-fit: cover;
     position: fixed;
     top: 0;
@@ -22,7 +22,7 @@
     padding: 0.6rem;
   }
   
-  svg.animate > path {
+  svg[data-animate=true] > path {
     transform-origin: center;
     animation: animation 1.75s infinite ease-in-out;
   }
