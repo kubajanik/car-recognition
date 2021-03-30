@@ -2,13 +2,14 @@ import React from 'react'
 import styles from './style.module.scss'
 import {IoIosQrScanner as CaptureIcon} from 'react-icons/io'
 import {navigate} from '@reach/router'
+import {useCarRecognition} from '../../hooks/use-car-recognition'
 
 export const Capture = () => {
   const video = React.useRef()
   const canvas = React.useRef()
-  
   const stream = React.useRef()
   const [wasCaptured, setWasCaptured] = React.useState(false)
+  const {recognize} = useCarRecognition()
 
   const getConnectedDevices = async type => {
     const devices = await navigator.mediaDevices.enumerateDevices();
@@ -35,32 +36,15 @@ export const Capture = () => {
 
     const image = await canvasToBlob(canvas.current)
 
-    const headers = new Headers()
-    headers.append('X-Access-Token', process.env.REACT_APP_SIGHTHOUND_API_TOKEN)
-    headers.append('Content-Type', 'application/octet-stream')
+    const {car, error} = await recognize(image);
 
-    const requestOptions = {
-      method: 'POST',
-      headers,
-      body: image
+    if (error) {
+      return navigate('/car/error')
     }
 
-    try {
-      const response = await fetch('https://dev.sighthoundapi.com/v1/recognition?objectType=vehicle', requestOptions)
-      const {objects} = await response.json()
-
-      if (!objects.length) {
-        return navigate('/car/error')
-      }
-
-      const {make, model} = objects[0].vehicleAnnotation.attributes.system
-  
-      navigate(`car/${make.name}/${model.name}`)
-    } catch (err) {
-      console.log(err)
-    } finally {
-      setWasCaptured(false)
-    }
+    navigate(`car/${car.make}/${car.model}`)
+    
+    setWasCaptured(false)
   }
 
   React.useEffect(() => {
