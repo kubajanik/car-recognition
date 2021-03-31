@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {FC} from 'react'
 import {Link} from '@reach/router'
 import {FaHome, FaRegHeart} from 'react-icons/fa'
 import {IoMdQrScanner} from 'react-icons/io'
@@ -7,7 +7,7 @@ import {GoSettings} from 'react-icons/go'
 import styles from './style.module.scss'
 import {useTranslation} from 'react-multi-lang'
 
-export const Navigation = () => {
+export const Navigation: FC = () => {
   const t = useTranslation()
 
   return (

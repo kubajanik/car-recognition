@@ -1,7 +1,13 @@
-import React from 'react'
+import React, {FC} from 'react'
 import styles from './style.module.scss'
 
-export const ColorPicker = ({colors, defaultColor, onChange}) => {
+interface Props {
+  colors: string[];
+  defaultColor: string;
+  onChange: (color: string) => void;
+}
+
+export const ColorPicker: FC<Props> = ({colors, defaultColor, onChange}) => {
   const [currentColor, setCurrentColor] = React.useState(defaultColor)
 
   return (

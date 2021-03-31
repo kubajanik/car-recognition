@@ -1,8 +1,12 @@
-import React from 'react'
+import React, {FC} from 'react'
 import LogoImg from '../../images/logo.png'
 import styles from './style.module.scss'
 
-export const Logo = ({animated}) => (
+interface Props {
+  animated?: boolean;
+}
+
+export const Logo: FC<Props> = ({animated = false}) => (
   <img 
     className={styles.logo}
     data-animated={animated}

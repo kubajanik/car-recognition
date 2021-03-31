@@ -1,8 +1,14 @@
-import React from 'react'
+import React, {FC} from 'react'
 import styles from './style.module.scss'
 import {Button} from '../Button'
 
-export const Choices = ({onChange, options, defaultValue}) => {
+interface Props {
+  options: {value: any, label: string}[];
+  onChange: (value: any) => void;
+  defaultValue: any;
+}
+
+export const Choices: FC<Props> = ({onChange, options, defaultValue}) => {
   const [currentValue, setCurrentValue] = React.useState(defaultValue)
   
   return (

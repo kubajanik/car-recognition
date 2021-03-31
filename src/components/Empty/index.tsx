@@ -1,9 +1,9 @@
-import React from 'react'
+import React, {FC} from 'react'
 import {Logo} from '../Logo'
 import {useTranslation} from 'react-multi-lang'
 import styles from './style.module.scss'
 
-export const Empty = () => {
+export const Empty: FC = () => {
   const t = useTranslation()
 
   return (
