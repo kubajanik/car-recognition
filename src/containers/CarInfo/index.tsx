@@ -1,16 +1,18 @@
-import React from 'react'
+import React, {FC} from 'react'
 import styles from './style.module.scss'
 import {IoMdClose, IoMdHeartEmpty, IoMdHeart} from 'react-icons/io'
-import db from '../../db'
-import {navigate} from '@reach/router'
+import db, {Car} from '../../db'
+import {navigate, RouteComponentProps} from '@reach/router'
 import {Logo} from '../../components/Logo'
 import {CarItem} from '../../components/CarItem'
 import Carmax from '../../images/carmax.png'
 import Autotrader from '../../images/autotrader.png'
 import Truecar from '../../images/truecar.png'
 
-export const CarInfo = ({make, model}) => {
-  const [car, setCar] = React.useState(null)
+interface Props extends Partial<Pick<Car, 'make' | 'model'>>, RouteComponentProps {}
+
+export const CarInfo: FC<Props> = ({make, model}) => {
+  const [car, setCar] = React.useState<Car | null>(null)
   const [isFavorite, setIsFavorite] = React.useState(false)
   
   React.useEffect(() => {
@@ -27,7 +29,7 @@ export const CarInfo = ({make, model}) => {
       car = await response.json()
       if (car) {
         setCar(car)
-        db.history.put({...car, date: new Date()})
+        await db.history.put({...car, date: new Date()})
       }
     }
 
@@ -40,7 +42,9 @@ export const CarInfo = ({make, model}) => {
   }, [make, model])
 
   const favorite = async () => {
-    await db.favorite.put({...car, date: new Date()})
+    if (car) {
+      await db.favorite.put({...car, date: new Date()})
+    }
     setIsFavorite(true)
   }
 
@@ -58,7 +62,7 @@ export const CarInfo = ({make, model}) => {
               <IoMdClose onClick={() => navigate(-1)} />
             </div>
 
-            <img className={styles.image} src={car?.image} alt="" />
+            <img className={styles.image} src={car.image} alt="" />
 
             <div>
               <h2>{make} {model}</h2>
@@ -81,7 +85,7 @@ export const CarInfo = ({make, model}) => {
               <div className={styles.similar}>
                 <h3>Similar results</h3>
                 <div>
-                  {car.similar.map((car, index) => (
+                  {car?.similar?.map((car, index) => (
                     <CarItem car={car} key={index} />
                   ))}
                 </div>

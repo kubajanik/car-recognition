@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {FC} from 'react'
 import useDarkMode from 'use-dark-mode'
 import {Header} from '../../components/Header'
 import {Choices} from '../../components/Choices'
@@ -6,8 +6,9 @@ import {ColorPicker} from '../../components/ColorPicker'
 import styles from './style.module.scss'
 import {useTranslation, setLanguage, getLanguage} from 'react-multi-lang'
 import {usePrimaryColor} from '../../hooks'
+import {RouteComponentProps} from '@reach/router'
 
-export const Settings = () => {
+export const Settings: FC<RouteComponentProps> = () => {
   const darkMode = useDarkMode()
   const t = useTranslation()
   const [color, setColor] = usePrimaryColor()

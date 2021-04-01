@@ -1,22 +1,30 @@
-import React from 'react'
+import React, {FC, MouseEvent} from 'react'
 import {CarItem} from '../CarItem'
 import {Header} from '../Header'
 import {SearchBox} from '../SearchBox'
 import {Empty} from '../Empty'
 import {useSearch} from 'react-use-search'
 import {VscTrash} from 'react-icons/vsc'
-import db from '../../db'
+import db, {Car} from '../../db'
 import styles from './style.module.scss'
 
-export const CarsGrid = ({cars, title, clearAll, removable = false}) => {
+interface Props {
+  cars: Car[];
+  title: string;
+  clearAll: () => void;
+  removable?: boolean;
+}
+
+export const CarsGrid: FC<Props> = ({cars, title, clearAll, removable = false}) => {
   const [filteredCars, query, handleChange] = useSearch(
     cars, 
     ({make, model}, query) => (new RegExp(query, 'i')).test(make + ' ' + model), 
     {filter: true}
   )
 
-  const unfavorite = async (e, {make, model}) => {
+  const unfavorite = async (e: MouseEvent, {make, model}: Car) => {
     e.stopPropagation()
+    
     await db.favorite.where({make, model}).delete()
   }
 

@@ -1,10 +1,11 @@
-import React from 'react'
+import React, {FC} from 'react'
 import db from '../../db'
 import {CarsGrid} from '../../components/CarsGrid'
 import {useLiveQuery} from 'dexie-react-hooks'
 import {useTranslation} from 'react-multi-lang'
+import {RouteComponentProps} from '@reach/router'
 
-export const Favorite = () => {
+export const Favorite: FC<RouteComponentProps> = () => {
   const cars = useLiveQuery(() => db.favorite.reverse().sortBy('date'))
   const t = useTranslation()
   
@@ -17,7 +18,9 @@ export const Favorite = () => {
       cars={cars} 
       title={t('favorite.title')}
       removable 
-      clearAll={() => db.favorite.clear()}
+      clearAll={() => {
+        db.favorite.clear()
+      }}
     />
   )
 }

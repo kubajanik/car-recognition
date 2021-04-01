@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Dispatch, SetStateAction} from 'react'
 
 interface InstallEvent extends Event {
   prompt: () => Promise<void>
@@ -37,5 +37,5 @@ export const usePrimaryColor = () => {
     localStorage.setItem('color', color)
   }, [color])
 
-  return [color, setColor]
+  return [color, setColor] as const
 }

@@ -1,13 +1,20 @@
-import React from 'react'
+import React, {FC, MouseEvent} from 'react'
 import {navigate, useMatch} from '@reach/router'
 import styles from './style.module.scss'
 import {IoMdClose} from 'react-icons/io'
+import {Car} from '../../db'
 
-export const CarItem = ({car, removable, onRemove}) => {
+interface Props {
+  car: Car;
+  removable?: boolean;
+  onRemove?: (e: MouseEvent, car: Car) => void
+}
+
+export const CarItem: FC<Props> = ({car, removable = false, onRemove = () => {}}) => {
   const match = useMatch('/car/:make/:model')
 
   const showCarInfo = () => {
-    navigate(`/car/${car.make}/${car.model}`, {replace: match})
+    navigate(`/car/${car.make}/${car.model}`, {replace: Boolean(match)})
   }
 
   return (
