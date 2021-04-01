@@ -1,8 +1,8 @@
-import React from 'react'
+import {FC} from 'react'
 import styles from './style.module.scss'
 import App from '../../images/app.png'
 
-export const AppPresentation = () => {
+export const AppPresentation: FC = () => {
   return (
     <div className={styles.presentation}>
       <h1>CAR RECOGNITION</h1>

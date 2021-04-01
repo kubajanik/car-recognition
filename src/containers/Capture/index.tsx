@@ -1,19 +1,20 @@
-import React from 'react'
+import React, {FC, MouseEvent} from 'react'
 import styles from './style.module.scss'
 import {IoIosQrScanner as CaptureIcon} from 'react-icons/io'
-import {navigate} from '@reach/router'
+import {navigate, RouteComponentProps} from '@reach/router'
 import {canvasToBlob, recognizeCar} from '../../utils'
 import Webcam from 'react-webcam'
 
-export const Capture = () => {
-  const webcam = React.useRef()
+export const Capture: FC<RouteComponentProps> = () => {
+  const webcam = React.useRef<Webcam>(null)
 
-  const capture = async (event) => {
-    event.target.dataset.animate = true
+  const capture = async (event: MouseEvent) => {
+    const button = event.target as HTMLButtonElement
+    button.dataset.animate = 'true'
 
-    webcam.current.video.pause()
+    webcam?.current?.video?.pause()
 
-    const canvas = webcam.current.getCanvas()
+    const canvas = webcam?.current?.getCanvas() as HTMLCanvasElement
     const photo = await canvasToBlob(canvas)
 
     const {car, error} = await recognizeCar(photo);
@@ -22,7 +23,7 @@ export const Capture = () => {
       return navigate('/car/error')
     }
 
-    navigate(`car/${car.make}/${car.model}`)
+    navigate(`car/${car?.make}/${car?.model}`)
   }
 
   return (

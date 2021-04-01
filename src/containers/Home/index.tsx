@@ -1,10 +1,16 @@
-import React from 'react'
+import React, {FC} from 'react'
 import {Button} from '../../components/Button'
 import styles from './style.module.scss'
 import {Logo} from '../../components/Logo'
 import {useTranslation} from 'react-multi-lang'
+import {RouteComponentProps} from '@reach/router'
 
-export const Home = ({install, prompt}) => {
+interface Props extends RouteComponentProps {
+  install: () => void;
+  prompt: Event | undefined;
+}
+
+export const Home: FC<Props> = ({install, prompt}) => {
   const t = useTranslation()
 
   return (

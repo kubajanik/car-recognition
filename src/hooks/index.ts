@@ -1,14 +1,21 @@
 import React from 'react'
 
-export const useInstallPrompt = () => {
-  const [event, setEvent] = React.useState(null)
+interface InstallEvent extends Event {
+  prompt: () => Promise<void>
+}
 
-  const ready = event => {
+export const useInstallPrompt = () => {
+  const [event, setEvent] = React.useState<InstallEvent>()
+
+  const ready = (event: Event) => {
+
     event.preventDefault()
-    setEvent(event)
+    setEvent(event as InstallEvent)
   }
 
-  const install = () => event?.prompt()
+  const install = () => {
+    event?.prompt()
+  }
 
   React.useEffect(() => {
     window.addEventListener('beforeinstallprompt', ready)
@@ -16,15 +23,17 @@ export const useInstallPrompt = () => {
     return () => window.removeEventListener('beforeinstallprompt', ready)
   }, [])
 
-  return [event, install]
+  return {event, install}
 }
 
 export const usePrimaryColor = () => {
-  const [color, setColor] = React.useState(() => localStorage.getItem('color') || '#fd3f3f')
+  const [color, setColor] = React.useState(() => 
+    localStorage.getItem('color') || '#fd3f3f'
+  )
 
   React.useEffect(() => {
     document.body.style.setProperty('--primary-color', color)
-    document.querySelector('meta[name=theme-color]').setAttribute('content', color)
+    document.querySelector('meta[name=theme-color]')?.setAttribute('content', color)
     localStorage.setItem('color', color)
   }, [color])
 

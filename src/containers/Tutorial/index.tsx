@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {FC} from 'react'
 import {useSwipeable} from 'react-swipeable'
 import {Button} from '../../components/Button'
 import {Logo} from '../../components/Logo'
@@ -6,7 +6,7 @@ import styles from './style.module.scss'
 import Capture from '../../images/capture.png'
 import Favorite from '../../images/favorite.png'
 
-export const Tutorial = () => {
+export const Tutorial: FC = () => {
   const [current, setCurrent] = React.useState(0)
 
   const steps = [
@@ -39,14 +39,15 @@ export const Tutorial = () => {
       }
     },
     onTap: ({event}) => {
-      if (event.target.tagName !== 'BUTTON' && current < steps.length - 1) {
+      const {tagName} = event.target as HTMLElement
+      if (tagName !== 'BUTTON' && current < steps.length - 1) {
         setCurrent(current + 1)
       }
     }
   })
   
   const skip = () => {
-    window.localStorage.setItem('tutorial-skipped', true)
+    window.localStorage.setItem('tutorial-skipped', 'true')
     window.location.reload()
   }
 

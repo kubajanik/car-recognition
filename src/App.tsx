@@ -17,7 +17,7 @@ import useDarkMode from 'use-dark-mode'
 import './style.css'
 
 export default function App() {
-  const [prompt, install] = useInstallPrompt()
+  const {event, install} = useInstallPrompt()
   
   useDarkMode()
   usePrimaryColor()
@@ -33,7 +33,7 @@ export default function App() {
   return (
     <div className={styles.container}>
       <Router className={styles.router}>
-        <Home path="/" install={install} prompt={prompt} />
+        <Home path="/" install={install} prompt={event} />
         <Favorite path="/favorite" />
         <Capture path="/capture" />
         <History path="/history" />

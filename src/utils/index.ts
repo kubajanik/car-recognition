@@ -1,12 +1,22 @@
-export const canvasToBlob = async canvas => {
+export const canvasToBlob = async (canvas: HTMLCanvasElement): Promise<Blob> => {
   return new Promise(resolve => 
-    canvas.toBlob(resolve, 'image/jpeg', 0.5)
+    canvas.toBlob(blob => {
+      resolve(blob as Blob)
+    }, 'image/jpeg', 0.5)
   )
 }
 
-export const recognizeCar = async (photo) => {
+interface RecognitionResult {
+  car?: {
+    make: string,
+    model: string
+  },
+  error?: string
+}
+
+export const recognizeCar = async (photo: Blob): Promise<RecognitionResult> => {
   const headers = new Headers()
-  headers.append('X-Access-Token', process.env.REACT_APP_SIGHTHOUND_API_TOKEN)
+  headers.append('X-Access-Token', process.env.REACT_APP_SIGHTHOUND_API_TOKEN!)
   headers.append('Content-Type', 'application/octet-stream')
 
   const requestOptions = {
