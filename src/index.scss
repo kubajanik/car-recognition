@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  font-family: 'Titillium Web', sans-serif;
+  
+  &.light-mode {
+    --primary-color: #fd3f3f;
+    --text-color: #2f3137;
+    --background-color: #fff;
+    --primary-shadow: #2f313733 0px 7px 29px 0px;
+  }
+  
+  &.dark-mode {
+    --primary-color: #fd3f3f;
+    --text-color: #fff;
+    --background-color: #2f3137;
+    --primary-shadow: #d0cec833 0px 7px 29px 0px;
+  }
+}

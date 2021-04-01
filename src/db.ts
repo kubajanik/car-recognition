@@ -15,15 +15,14 @@ class Database extends Dexie {
   constructor() {
     super('car-recognition')
 
+    this.version(1).stores({
+      history: '[make+model], image, date, similar',
+      favorite: '[make+model], image, date, similar'
+    })
+
     this.history = this.table('history')
     this.favorite = this.table('favorite')
   }
 }
-
-// const db = new Dexie('car-recognition')
-// db.version(1).stores({
-//   history: '[make+model], image, date',
-//   favorite: '[make+model], image, date'
-// })
 
 export default new Database()

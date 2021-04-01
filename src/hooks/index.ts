@@ -1,4 +1,4 @@
-import React, {Dispatch, SetStateAction} from 'react'
+import React from 'react'
 
 interface InstallEvent extends Event {
   prompt: () => Promise<void>

@@ -14,7 +14,6 @@ import {CarError} from './containers/CarError'
 import {useInstallPrompt, usePrimaryColor} from './hooks'
 import isMobile from 'ismobilejs'
 import useDarkMode from 'use-dark-mode'
-import './style.css'
 
 export default function App() {
   const {event, install} = useInstallPrompt()
