@@ -31,7 +31,7 @@
   "scripts": {
     "dev": "npm-run-all --parallel netlify localtunnel",
     "netlify": "netlify dev --port 8080",
-    "localtunnel": "lt --port 8080",
+    "localtunnel": "lt --port 8080 --subdomain car-recognition",
     "start": "react-scripts start",
     "build": "react-scripts build"
   },
