@@ -14,10 +14,12 @@ import {CarError} from './containers/CarError'
 import {useInstallPrompt, usePrimaryColor} from './hooks'
 import isMobile from 'ismobilejs'
 import useDarkMode from 'use-dark-mode'
+import useVH from 'react-viewport-height'
 
 export default function App() {
   const {event, install} = useInstallPrompt()
   
+  useVH()
   useDarkMode()
   usePrimaryColor()
 
