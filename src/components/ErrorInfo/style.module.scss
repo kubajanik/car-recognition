@@ -1,0 +1,16 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  p {
+    margin: 0;
+  }
+  
+  svg {
+    color: var(--primary-color);
+    font-size: 5rem;
+  }
+}

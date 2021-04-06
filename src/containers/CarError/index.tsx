@@ -1,9 +1,9 @@
 import {FC} from 'react'
-import {MdError} from 'react-icons/md'
 import {Button} from '../../components/Button'
 import {navigate, RouteComponentProps} from '@reach/router'
 import {useTranslation} from 'react-multi-lang'
 import styles from './style.module.scss'
+import {ErrorInfo} from '../../components/ErrorInfo'
 
 export const CarError: FC<RouteComponentProps> = () => {
   const t = useTranslation()
@@ -12,10 +12,7 @@ export const CarError: FC<RouteComponentProps> = () => {
     <div className={styles.modal}>
       <div />
       
-      <div>
-        <MdError />
-        <p>{t('car-error.message')}</p>
-      </div>
+      <ErrorInfo error={t('car-error.message')} />
 
       <Button onClick={() => navigate(-1)}>
         {t('car-error.button')}
